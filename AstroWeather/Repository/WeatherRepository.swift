@@ -23,12 +23,12 @@ extension WeatherEndpoint: APIEndpointConfigurable {
     var path: String {
         switch self {
         case .fetchWeather:
-            return "" // TODO: check documentation for path
+            return "weather" // TODO: check documentation for path
         }
     }
     
     var baseURL: String {
-        return "https://api.openweathermap.org/data/2.5/weather" // TODO: Set base URL using default config
+        return "https://api.openweathermap.org/data/" // TODO: Set base URL using default config
     }
     
     var headers: [String : String] {
@@ -50,7 +50,7 @@ extension WeatherEndpoint: APIEndpointConfigurable {
     }
     
     var apiVersion: APIVersion {
-        .noVersion
+        .v1 // 2.5
     }
 
 }
