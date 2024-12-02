@@ -16,6 +16,17 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            Task {
+                do {
+                    let repository = WeatherRepository()
+                    let weather = try await repository.fetchWeather()
+                    print("Network response: \(weather)")
+                } catch {
+                    print("Error fetching weather: \(error)")
+                }
+            }
+        }
     }
 }
 
