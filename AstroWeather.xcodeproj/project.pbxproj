@@ -31,6 +31,8 @@
 		6D7F9FED2CFD280D00510F6D /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7F9FEC2CFD280D00510F6D /* Wind.swift */; };
 		6D7F9FEF2CFD282400510F6D /* Rain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7F9FEE2CFD282400510F6D /* Rain.swift */; };
 		6D7F9FF12CFD284C00510F6D /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7F9FF02CFD284C00510F6D /* Clouds.swift */; };
+		6DBF953C2CFE2EA900765E6C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF953B2CFE2EA900765E6C /* Environment.swift */; };
+		6DBF953E2CFE3C3700765E6C /* ConfigValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF953D2CFE3C3700765E6C /* ConfigValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,11 @@
 		6D7F9FEC2CFD280D00510F6D /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		6D7F9FEE2CFD282400510F6D /* Rain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rain.swift; sourceTree = "<group>"; };
 		6D7F9FF02CFD284C00510F6D /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
+		6DBF953B2CFE2EA900765E6C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		6DBF953D2CFE3C3700765E6C /* ConfigValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigValue.swift; sourceTree = "<group>"; };
+		6DBF953F2CFE3D2000765E6C /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
+		6DBF95402CFE3DC700765E6C /* prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = prod.xcconfig; sourceTree = "<group>"; };
+		6DBF95422CFE442E00765E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +115,7 @@
 		6D6DF7462CFCBEC000F9126A = {
 			isa = PBXGroup;
 			children = (
+				6DBF95412CFE3E3200765E6C /* Configs */,
 				6D7F9FD72CFCE13D00510F6D /* Utils */,
 				6D7F9FCA2CFCD98100510F6D /* Networking */,
 				6D6DF7512CFCBEC000F9126A /* AstroWeather */,
@@ -130,6 +138,7 @@
 		6D6DF7512CFCBEC000F9126A /* AstroWeather */ = {
 			isa = PBXGroup;
 			children = (
+				6DBF95422CFE442E00765E6C /* Info.plist */,
 				6D7F9FDF2CFD1FAC00510F6D /* Models */,
 				6D7F9FDA2CFD1F1800510F6D /* Repository */,
 				6D6DF7522CFCBEC000F9126A /* AstroWeatherApp.swift */,
@@ -182,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				6D7F9FD82CFCE16100510F6D /* Logger.swift */,
+				6DBF953B2CFE2EA900765E6C /* Environment.swift */,
+				6DBF953D2CFE3C3700765E6C /* ConfigValue.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,6 +219,15 @@
 				6D7F9FF02CFD284C00510F6D /* Clouds.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6DBF95412CFE3E3200765E6C /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				6DBF95402CFE3DC700765E6C /* prod.xcconfig */,
+				6DBF953F2CFE3D2000765E6C /* dev.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +369,7 @@
 				6D7F9FED2CFD280D00510F6D /* Wind.swift in Sources */,
 				6D7F9FD62CFCDD9600510F6D /* APIClient.swift in Sources */,
 				6D7F9FD92CFCE16100510F6D /* Logger.swift in Sources */,
+				6DBF953C2CFE2EA900765E6C /* Environment.swift in Sources */,
 				6D7F9FD02CFCDC3B00510F6D /* APIEndpointConfigurable.swift in Sources */,
 				6D7F9FF12CFD284C00510F6D /* Clouds.swift in Sources */,
 				6D6DF7552CFCBEC000F9126A /* ContentView.swift in Sources */,
@@ -356,6 +377,7 @@
 				6D7F9FEB2CFD27CC00510F6D /* LocationDetails.swift in Sources */,
 				6D7F9FE52CFD275400510F6D /* Coordinates.swift in Sources */,
 				6D7F9FDE2CFD1F8500510F6D /* WeatherRepositoryRequesting.swift in Sources */,
+				6DBF953E2CFE3C3700765E6C /* ConfigValue.swift in Sources */,
 				6D7F9FEF2CFD282400510F6D /* Rain.swift in Sources */,
 				6D7F9FD22CFCDD3100510F6D /* APIClientError.swift in Sources */,
 				6D6DF7532CFCBEC000F9126A /* AstroWeatherApp.swift in Sources */,
@@ -397,6 +419,7 @@
 /* Begin XCBuildConfiguration section */
 		6D6DF7712CFCBEC100F9126A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF953F2CFE3D2000765E6C /* dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -460,6 +483,7 @@
 		};
 		6D6DF7722CFCBEC100F9126A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF95402CFE3DC700765E6C /* prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -516,6 +540,7 @@
 		};
 		6D6DF7742CFCBEC100F9126A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF953F2CFE3D2000765E6C /* dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -524,6 +549,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AstroWeather/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AstroWeather/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -545,6 +571,7 @@
 		};
 		6D6DF7752CFCBEC100F9126A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF95402CFE3DC700765E6C /* prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -553,6 +580,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AstroWeather/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AstroWeather/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -574,6 +602,7 @@
 		};
 		6D6DF7772CFCBEC100F9126A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF953F2CFE3D2000765E6C /* dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,6 +622,7 @@
 		};
 		6D6DF7782CFCBEC100F9126A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF95402CFE3DC700765E6C /* prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -612,6 +642,7 @@
 		};
 		6D6DF77A2CFCBEC100F9126A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF953F2CFE3D2000765E6C /* dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -629,6 +660,7 @@
 		};
 		6D6DF77B2CFCBEC100F9126A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBF95402CFE3DC700765E6C /* prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

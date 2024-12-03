@@ -41,7 +41,7 @@ extension WeatherEndpoint: APIEndpointConfigurable {
         return [
             "lat": "44.34",
             "lon": "10.99",
-            "appid": ""
+            "appid": Environment.apiKey
         ]
     }
     
