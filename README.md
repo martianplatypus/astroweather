@@ -8,9 +8,6 @@ AstroWeather is a simple weather client for iOS that displays current weather in
 
 AstroWeather covers the following use cases:
 
-<img src="https://github.com/user-attachments/assets/4db4c050-7deb-4f52-a4d9-0a6e25c8f823" width=20% height=20%>
-<img src="https://github.com/user-attachments/assets/e2e26176-0e98-4140-a638-cfb7dcdc7500" width=20% height=20%>
-
 1. **Display Weather Information**:
    - Fetch and display weather data for:
      - User's current location.
@@ -19,15 +16,17 @@ AstroWeather covers the following use cases:
      - City name.
      - Weather description and icon.
      - Current temperature, max temperature, and min temperature.
-
-<img src="https://github.com/user-attachments/assets/5c29a01b-d520-4d99-9058-1ee385218bd0" width=20% height=20%>
-<img src="https://github.com/user-attachments/assets/bae301ef-54fb-4bf6-9fea-89c922cfae67" width=20% height=20%>
+<img src="https://github.com/user-attachments/assets/4db4c050-7deb-4f52-a4d9-0a6e25c8f823" width=20% height=20%>
+<img src="https://github.com/user-attachments/assets/e2e26176-0e98-4140-a638-cfb7dcdc7500" width=20% height=20%>
 
 2. **Location Management**:
 
    - Request and handle user permissions for location access.
    - Show weather for the user's current location if permission is granted.
    - Persist the user's last selected city or current location across app launches.
+
+<img src="https://github.com/user-attachments/assets/5c29a01b-d520-4d99-9058-1ee385218bd0" width=20% height=20%>
+<img src="https://github.com/user-attachments/assets/bae301ef-54fb-4bf6-9fea-89c922cfae67" width=20% height=20%>
 
 3. **User-Friendly Interface**:
 
