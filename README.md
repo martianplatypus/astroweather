@@ -56,16 +56,18 @@ AstroWeather covers the following use cases:
    ```
 2. **Configure API Key**:
 
-   - Create a file named `dev.xcconfig` in the root of the project (ignored by `.gitignore` for security).
+   - Create a file named `dev.xcconfig` in AstroWeather/Configs folder. (ignored by `.gitignore` for security).
    - Add the following content to `dev.xcconfig`:
      ```plaintext
      OPEN_WEATHER_API_KEY = your_api_key_here
      ```
    - Replace `your_api_key_here` with your actual OpenWeatherMap API key.
+<img width="253" alt="" src="https://github.com/user-attachments/assets/879e3ace-ae74-4990-97a9-b8adaef4fd5f">
+
 
 3. Open `AstroWeather.xcodeproj` in Xcode.
 
-4. Run the app on a compatible simulator or device.
+4. Run the app on a compatible simulator. Since there is no code sign configured. You won't be able to run the code in a real device at this moment.
 
 ---
 
