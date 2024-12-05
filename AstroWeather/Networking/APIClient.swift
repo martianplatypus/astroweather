@@ -32,6 +32,7 @@ final class APIClient: APIClientRequesting {
         }
         
         let data = try await performRequest(request)
+        
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
@@ -71,7 +72,7 @@ private extension APIClient {
                 throw APIClientError.invalidResponse(data)
             }
             
-            logger.log("HTTP resonse: \(httpResponse)")
+            Logger.log("HTTP resonse: \(httpResponse)")
             
             guard (200...299).contains(httpResponse.statusCode) else {
                 throw APIClientError.statusCode(httpResponse.statusCode)

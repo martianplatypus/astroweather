@@ -9,4 +9,6 @@ import Foundation
 
 protocol WeatherRepositoryRequesting {
     func fetchWeather() async throws -> Weather
+    func fetchWeatherForCities() async throws -> [Weather]
+    func fetchWeatherForCities(currentLocation latitude: Double, longitude: Double) async throws -> [Weather]
 }

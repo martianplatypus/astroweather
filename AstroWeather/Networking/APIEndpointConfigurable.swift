@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIVersion: String {
-    case v1 = "/2.5/"
+    case v1 = "/2.5"
     case noVersion = ""
 }
 

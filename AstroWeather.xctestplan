@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "3B2394F5-334C-4785-8F43-35FFFCE6F03D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AstroWeather.xcodeproj",
+        "identifier" : "6D6DF75E2CFCBEC100F9126A",
+        "name" : "AstroWeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}
