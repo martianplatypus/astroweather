@@ -51,7 +51,7 @@ AstroWeather covers the following use cases:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/AstroWeather.git
+   git clone git@github.com:martianplatypus/astroweather.git
    cd AstroWeather
    ```
 2. **Configure API Key**:
