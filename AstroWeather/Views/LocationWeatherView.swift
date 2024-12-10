@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LocationWeatherView: View {
     @EnvironmentObject var weatherDataViewModel: WeatherDataViewModel
+    @StateObject private var settings = TemperatureSettings.shared
+    
     let selectedWeather: Weather
     
     var body: some View {
@@ -19,9 +21,9 @@ struct LocationWeatherView: View {
                     WeatherSummaryHeaderView(
                         locationName: selectedWeather.cityName,
                         conditions: selectedWeather.weatherDetails.first?.description ?? "N/A",
-                        currentTemperature: Measurement(value: selectedWeather.conditions.temperature, unit: .celsius),
-                        maximumTemperature: Measurement(value: selectedWeather.conditions.maximumTemperature, unit: .celsius),
-                        minimumTemperature: Measurement(value: selectedWeather.conditions.minimumTemperature, unit: .celsius)
+                        currentTemperature: Measurement(value: selectedWeather.conditions.temperature, unit: settings.preferredUnit),
+                        maximumTemperature: Measurement(value: selectedWeather.conditions.maximumTemperature, unit: settings.preferredUnit),
+                        minimumTemperature: Measurement(value: selectedWeather.conditions.minimumTemperature, unit: settings.preferredUnit)
                     )
                     Spacer()
                 }

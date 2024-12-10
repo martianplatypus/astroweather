@@ -38,7 +38,7 @@ extension LocationManager: CLLocationManagerDelegate {
             self.authorizationStatus = manager.authorizationStatus
             if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
                 self.startUpdatingLocation()
-                UserDefaults.standard.set(true, forKey: "LocationPermissionGranted")
+                UserDefaults.standard.set(true, forKey: "OnboardingCompleted")
             }
         }
     }

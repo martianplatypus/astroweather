@@ -66,6 +66,7 @@ struct LocationPermissionView: View {
                 }
                 Button("Continue") {
                     isShowingPermissionView = false
+                    UserDefaults.standard.set(true, forKey: "OnboardingCompleted")
                 }
             } message: {
                 Text("You can enable location access later in the app settings")

@@ -10,6 +10,8 @@ import SwiftUI
 struct LocationListView: View {
     @EnvironmentObject var weatherDataViewModel: WeatherDataViewModel
     @EnvironmentObject var locationManager: LocationManager
+    @StateObject private var settings = TemperatureSettings.shared
+    @AppStorage("temperatureUnit") private var temperatureSettings = 1
     
     @State private var isShowingDetail = true // Start with TabView by default
     @State private var selectedCityIndex: Int = UserDefaults.standard.integer(forKey: "LastViewedCityIndex")
@@ -57,7 +59,8 @@ struct LocationListView: View {
                         
                         Button(action: {
                             Task {
-                                await weatherDataViewModel.fetchWeatherData()
+                                let location = locationManager.currentLocation
+                                await weatherDataViewModel.fetchWeatherData(currentLocation: location)
                             }
                         }) {
                             Image(systemName: "arrow.clockwise")
@@ -95,9 +98,9 @@ struct LocationListView: View {
                                     weatherDescription: weather.weatherDetails.first?.description ?? "N/A",
                                     currentTime: weather.localTimeToString(),
                                     isCurrentLocation: weather.cityID == -1,
-                                    currentTemperature: Measurement(value: weather.conditions.temperature, unit: .celsius),
-                                    highTemperature: Measurement(value: weather.conditions.maximumTemperature, unit: .celsius),
-                                    lowTemperature: Measurement(value: weather.conditions.minimumTemperature, unit: .celsius)
+                                    currentTemperature: Measurement(value: weather.conditions.temperature, unit: settings.preferredUnit),
+                                    highTemperature: Measurement(value: weather.conditions.maximumTemperature, unit: settings.preferredUnit),
+                                    lowTemperature: Measurement(value: weather.conditions.minimumTemperature, unit: settings.preferredUnit)
                                 )
                                 .onTapGesture {
                                     withAnimation {
@@ -114,21 +117,9 @@ struct LocationListView: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                if weatherDataViewModel.weatherData.isEmpty {
-                    if let location = locationManager.currentLocation {
-                        await weatherDataViewModel.fetchWeatherData(currentLocation: location)
-                    } else {
-                        await weatherDataViewModel.fetchWeatherData()
-                    }
-                }
-            }
-            
-            if !weatherDataViewModel.weatherData.indices.contains(selectedCityIndex) {
-                selectedCityIndex = 0
-            }
+        .onAppear {            
             isRotating = false
+            settings.preferredUnit = temperatureSettings == 1 ? .celsius : .fahrenheit
         }
         .onChange(of: selectedCityIndex) { newValue in
             UserDefaults.standard.set(newValue, forKey: "LastViewedCityIndex")
@@ -157,7 +148,6 @@ struct LocationListView: View {
                             Spacer()
                             Button(action: {
                                 withAnimation {
-//                                    isShowingDetail = false
                                     showSettings = true
                                 }
                             }) {

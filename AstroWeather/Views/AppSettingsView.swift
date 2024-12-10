@@ -10,7 +10,7 @@ import SwiftUI
 struct AppSettingsView: View {
     
     @SwiftUI.Environment(\.dismiss) private var dismiss
-    @AppStorage("temperatureUnit") private var temperatureSettings = 0
+    @AppStorage("temperatureUnit") private var temperatureSettings = 1 // Celsius
     @AppStorage("measurementUnit") private var measurementUnitSettings = 0
     @AppStorage("allowLocationSharing") private var allowLocationSharing = false
     @StateObject private var locationManager = LocationManager()
@@ -44,6 +44,9 @@ struct AppSettingsView: View {
                                     .font(.system(size: 14))
                                 Text("C").tag(1)
                                     .font(.system(size: 14))
+                            }
+                            .onChange(of: temperatureSettings) { newValue in
+                                TemperatureSettings.shared.preferredUnit = temperatureSettings == 1 ? .celsius : .fahrenheit
                             }
                             .pickerStyle(.segmented)
                         }
