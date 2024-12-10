@@ -9,7 +9,6 @@ AstroWeather is a simple weather client for iOS that displays current weather in
 AstroWeather covers the following use cases:
 
 1. **Display Weather Information**:
-
    - Fetch and display weather data for:
      - User's current location.
      - Three hardcoded cities: London, Montevideo, and Buenos Aires.
@@ -17,12 +16,17 @@ AstroWeather covers the following use cases:
      - City name.
      - Weather description and icon.
      - Current temperature, max temperature, and min temperature.
+<img src="https://github.com/user-attachments/assets/4db4c050-7deb-4f52-a4d9-0a6e25c8f823" width=20% height=20%>
+<img src="https://github.com/user-attachments/assets/e2e26176-0e98-4140-a638-cfb7dcdc7500" width=20% height=20%>
 
 2. **Location Management**:
 
    - Request and handle user permissions for location access.
    - Show weather for the user's current location if permission is granted.
    - Persist the user's last selected city or current location across app launches.
+
+<img src="https://github.com/user-attachments/assets/5c29a01b-d520-4d99-9058-1ee385218bd0" width=20% height=20%>
+<img src="https://github.com/user-attachments/assets/bae301ef-54fb-4bf6-9fea-89c922cfae67" width=20% height=20%>
 
 3. **User-Friendly Interface**:
 
@@ -47,21 +51,23 @@ AstroWeather covers the following use cases:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/AstroWeather.git
+   git clone git@github.com:martianplatypus/astroweather.git
    cd AstroWeather
    ```
 2. **Configure API Key**:
 
-   - Create a file named `dev.xcconfig` in the root of the project (ignored by `.gitignore` for security).
+   - Create a file named `dev.xcconfig` in AstroWeather/Configs folder. (ignored by `.gitignore` for security).
    - Add the following content to `dev.xcconfig`:
      ```plaintext
      OPEN_WEATHER_API_KEY = your_api_key_here
      ```
    - Replace `your_api_key_here` with your actual OpenWeatherMap API key.
+<img width="253" alt="" src="https://github.com/user-attachments/assets/879e3ace-ae74-4990-97a9-b8adaef4fd5f">
+
 
 3. Open `AstroWeather.xcodeproj` in Xcode.
 
-4. Run the app on a compatible simulator or device.
+4. Run the app on a compatible simulator. Since there is no code sign configured. You won't be able to run the code in a real device at this moment.
 
 ---
 
@@ -126,3 +132,4 @@ AstroWeather uses **MVVM + Repository** architecture to achieve modularity, test
 - Optimize network error handling with retries.
 
 ---
+
