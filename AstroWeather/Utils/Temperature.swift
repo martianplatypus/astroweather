@@ -8,7 +8,7 @@
 import Foundation
 
 extension Measurement where UnitType == UnitTemperature {
-    static var preferredUnit: UnitTemperature = .celsius
+    static var preferredUnit: UnitTemperature = .fahrenheit
     
     // Shared formatter instance
     private static let formatter: MeasurementFormatter = {

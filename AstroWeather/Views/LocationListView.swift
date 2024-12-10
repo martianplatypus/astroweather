@@ -14,6 +14,7 @@ struct LocationListView: View {
     @State private var isShowingDetail = true // Start with TabView by default
     @State private var selectedCityIndex: Int = UserDefaults.standard.integer(forKey: "LastViewedCityIndex")
     @State private var isRotating = false
+    @State var showSettings = false
     
     var body: some View {
         ZStack {
@@ -152,6 +153,29 @@ struct LocationListView: View {
                 }
                 .overlay(
                     VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                withAnimation {
+//                                    isShowingDetail = false
+                                    showSettings = true
+                                }
+                            }) {
+                                Image(systemName: "slider.horizontal.3")
+                                    .font(.title2)
+                                    .padding(10)
+                                    .background(
+                                        Circle()
+                                            .fill(.ultraThinMaterial)
+                                    )
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 8)
+                                
+                            }
+                            .sheet(isPresented: $showSettings) {
+                               AppSettingsView()
+                            }
+                        }
                         Spacer()
                         HStack {
                             Spacer()
