@@ -13,19 +13,13 @@ struct LocationListView: View {
     
     @State private var isShowingDetail = true // Start with TabView by default
     @State private var selectedCityIndex: Int = UserDefaults.standard.integer(forKey: "LastViewedCityIndex")
+    @State private var isRotating = false
     
     var body: some View {
         ZStack {
-            Color.blue
+            Theme.Gradients.background
                 .ignoresSafeArea()
-            
-            if weatherDataViewModel.isLoading {
-                VStack {
-                    ProgressView("Loading weather data...")
-                        .foregroundColor(.white)
-                        .padding()
-                }
-            } else if let errorMessage = weatherDataViewModel.errorMessage {
+            if let errorMessage = weatherDataViewModel.errorMessage {
                 VStack {
                     Text("Error")
                         .font(.title)
@@ -38,7 +32,7 @@ struct LocationListView: View {
                     
                     Button(action: {
                         Task {
-                            await weatherDataViewModel.fetchWeatherData()
+                            await weatherDataViewModel.fetchWeatherData(currentLocation: locationManager.currentLocation)
                         }
                     }) {
                         Text("Retry")
@@ -46,7 +40,6 @@ struct LocationListView: View {
                             .background(Color.white)
                             .cornerRadius(8)
                     }
-                    .foregroundColor(.blue)
                 }
                 .padding()
             } else if isShowingDetail && !weatherDataViewModel.weatherData.isEmpty {
@@ -69,9 +62,27 @@ struct LocationListView: View {
                             Image(systemName: "arrow.clockwise")
                                 .font(.title2)
                                 .padding(8)
-                                .background(Circle().fill(Color.white.opacity(0.8)))
+                                .background(
+                                    Circle()
+                                        .fill(.ultraThinMaterial)
+                                )
+                                .foregroundColor(.white)
+                                .rotationEffect(Angle(degrees: isRotating ? 360 : 0))
+                                .animation(
+                                    isRotating ? .linear(duration: 1).repeatForever(autoreverses: false) : .default,
+                                    value: isRotating
+                                )
                         }
-                        .foregroundColor(.blue)
+                        .foregroundColor(Theme.Colors.primary)
+                        .onChange(of: weatherDataViewModel.isLoading) { newValue in
+                            if newValue {
+                                isRotating = true
+                            } else {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    isRotating = false
+                                }
+                            }
+                        }
                     }
                     .padding(.horizontal)
                     
@@ -81,7 +92,7 @@ struct LocationListView: View {
                                 LocationRowView(
                                     cityName: weather.cityName,
                                     weatherDescription: weather.weatherDetails.first?.description ?? "N/A",
-                                    currentTime: "3:45 PM",
+                                    currentTime: weather.localTimeToString(),
                                     isCurrentLocation: weather.cityID == -1,
                                     currentTemperature: Measurement(value: weather.conditions.temperature, unit: .celsius),
                                     highTemperature: Measurement(value: weather.conditions.maximumTemperature, unit: .celsius),
@@ -116,6 +127,7 @@ struct LocationListView: View {
             if !weatherDataViewModel.weatherData.indices.contains(selectedCityIndex) {
                 selectedCityIndex = 0
             }
+            isRotating = false
         }
         .onChange(of: selectedCityIndex) { newValue in
             UserDefaults.standard.set(newValue, forKey: "LastViewedCityIndex")
@@ -131,12 +143,10 @@ struct LocationListView: View {
                     ForEach(weatherDataViewModel.weatherData.indices, id: \.self) { index in
                         LocationWeatherView(selectedWeather: weatherDataViewModel.weatherData[index])
                             .tag(index)
-                            .padding()
-                            .background(Color.blue)
                             .cornerRadius(12)
                     }
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                .tabViewStyle(.page(indexDisplayMode: .automatic))
                 .onChange(of: selectedCityIndex) { newValue in
                     UserDefaults.standard.set(newValue, forKey: "LastViewedCityIndex")
                 }
@@ -151,13 +161,19 @@ struct LocationListView: View {
                                 }
                             }) {
                                 Image(systemName: "line.horizontal.3")
-                                    .font(.title)
-                                    .padding()
-                                    .background(Circle().fill(Color.white.opacity(0.8)))
+                                    .font(.title2)
+                                    .padding(10)
+                                    .background(
+                                        Circle()
+                                            .fill(.ultraThinMaterial)
+                                    )
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 8)
+                                
                             }
-                            .padding(.trailing, 16)
                         }
                     }
+                        .padding(.trailing, 8)
                 )
             }
         }

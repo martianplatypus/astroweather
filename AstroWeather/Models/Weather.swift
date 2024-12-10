@@ -22,7 +22,7 @@ struct Weather: Codable {
     let cityID: Int
     let cityName: String
     let responseCode: Int
-    
+     
     enum CodingKeys: String, CodingKey {
         case coordinates = "coord"
         case weatherDetails = "weather"
@@ -40,6 +40,21 @@ struct Weather: Codable {
         case responseCode = "cod"
     }
 }
+
+extension Weather {
+    func localTimeToString() -> String {
+        let locationTime = Date(timeIntervalSince1970: TimeInterval(self.dateTime))
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: self.timezone)
+
+        let locationTimeToString = formatter.string(from: locationTime)
+        
+        return locationTimeToString
+    }
+}
+
 
 extension Weather {
     static func mock() -> Weather {

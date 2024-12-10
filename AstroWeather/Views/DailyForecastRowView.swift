@@ -24,7 +24,7 @@ struct DailyForecastRowView: View {
                     Text("70%")
                         .font(.system(size: 14))
                         .fontWeight(.bold)
-                        .foregroundColor(Color(red: 95/255, green: 198/255, blue: 237/255))
+                        .foregroundColor(Color(red: 100/255, green: 225/255, blue: 255/255))
                 }
                 Spacer()
                 Text("L: 19")

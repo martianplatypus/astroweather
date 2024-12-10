@@ -75,7 +75,7 @@ struct LocationWeatherView: View {
                 .padding(.horizontal)
             }
         }
-        .background(.blue)
+        .background(.clear)
     }
     
     private func formatTime(_ timestamp: Int, timezoneOffset: Int) -> String {
@@ -95,6 +95,9 @@ struct LocationWeatherView: View {
     let weatherDataViewModel = WeatherDataViewModel(repository: WeatherRepository(), locationManager: LocationManager())
     weatherDataViewModel.weatherData = WeatherRepository.mock()
     
-    return LocationWeatherView(selectedWeather: weatherDataViewModel.weatherData.first!)
+    var view = LocationWeatherView(selectedWeather: weatherDataViewModel.weatherData.first!)
         .environmentObject(weatherDataViewModel)
+        .background(Theme.Gradients.background)
+    
+    return view
 }
